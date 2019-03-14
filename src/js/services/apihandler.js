@@ -222,7 +222,8 @@
                 action: 'download',
                 path: path
             };
-            return path && [apiUrl, $httpParamSerializer(data)].join('?');
+            var separator = apiUrl.indexOf('?') !== -1 ? "&" : "?";
+            return path && [apiUrl, $httpParamSerializer(data)].join(separator);
         };
 
         ApiHandler.prototype.download = function(apiUrl, itemPath, toFilename, downloadByAjax, forceNewWindow) {
